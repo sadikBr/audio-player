@@ -9,8 +9,9 @@
     <title>Music Player</title>
   </head>
   <body>
+    <audio></audio>
     <div class="music-player">
-      <img src="./songs/images/Soolking - Luna.jpeg" class="bg-image" />
+      <img id="bg-image" alt="background image" class="bg-image" />
 
       <div class="header">
         <img src="./icons/icons8-menu-24.png" alt="" />
@@ -24,9 +25,9 @@
       </div>
 
       <div class="song-info">
-        <img src="./songs/images/Soolking - Luna.jpeg" alt="" />
-        <h1>Name Of The Song</h1>
-        <p>Artist</p>
+        <img id="thumbnail" alt="song thumbnail" />
+        <h1 id="title"></h1>
+        <p id="artist"></p>
       </div>
 
       <div class="controls">
@@ -46,11 +47,11 @@
 
       <div class="buttons">
         <img src="./icons/icons8-repeat-26.png" alt="" />
-        <img src="./icons/icons8-skip-to-start-24.png" alt="" />
-        <div class="play-pause">
+        <img id="prev-btn" src="./icons/icons8-skip-to-start-24.png" alt="" />
+        <div id="play-pause" class="play-pause">
           <img src="./icons/icons8-play-24.png" alt="" />
         </div>
-        <img src="./icons/icons8-end-24.png" alt="" />
+        <img id="next-btn" src="./icons/icons8-end-24.png" alt="" />
         <img src="./icons/icons8-heart-26.png" alt="" />
       </div>
     </div>

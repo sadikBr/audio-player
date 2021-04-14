@@ -12,7 +12,7 @@ export default [
     title: 'Luna',
   },
   {
-    source: './songs/source/Youssef Shems feat. Ramos - MAYEMI.webm',
+    source: './songs/source/Youcef Shems feat. Ramos - MAYEMI.webm',
     thumbnail: './songs/images/Youssef Shems - mayemi.jpeg',
     artist: 'Youssef Shems feat. Ramos',
     title: 'Mayemi',
