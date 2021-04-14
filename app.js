@@ -9,11 +9,21 @@ const songTitle = document.getElementById('title');
 const songArtist = document.getElementById('artist');
 const songThumbnail = document.getElementById('thumbnail');
 
+const currentTimeElement = document.getElementById('current-time');
+const songDurationElement = document.getElementById('duration');
+
 import songs from './songs.js';
 
 let currentSongIndex = 0;
 
 loadSongAndPlay();
+
+audioElement.addEventListener('timeupdate', () => {
+  const { duration, currentTime } = audioElement;
+
+  currentTimeElement.textContent = formatTime(currentTime);
+  songDurationElement.textContent = formatTime(duration);
+});
 
 playBtn.addEventListener('click', () => {
   if (audioElement.paused) {
@@ -44,7 +54,21 @@ function loadSongAndPlay() {
   songThumbnail.src = songs[currentSongIndex].thumbnail;
   songTitle.textContent = songs[currentSongIndex].title;
   songArtist.textContent = songs[currentSongIndex].artist;
+
   playSong();
+}
+
+function formatTime(time) {
+  const minutes =
+    Math.floor(time / 60) > 9
+      ? Math.floor(time / 60)
+      : `0${Math.floor(time / 60)}`;
+  const seconds =
+    Math.floor(time % 60) > 9
+      ? Math.floor(time % 60)
+      : `0${Math.floor(time % 60)}`;
+
+  return `${minutes}:${seconds}`;
 }
 
 function playSong() {
