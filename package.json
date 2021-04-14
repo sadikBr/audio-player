@@ -1,0 +1,11 @@
+{
+  "name": "audio-player",
+  "version": "1.0.0",
+  "description": "an audio player",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "sadik brahim",
+  "license": "MIT"
+}

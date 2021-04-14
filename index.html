@@ -12,15 +12,29 @@
     <audio></audio>
     <div class="music-player">
       <img id="bg-image" alt="background image" class="bg-image" />
+      <div class="gallery">
+        <div class="gallery-header">
+          <h1>Gallery</h1>
+          <button id="close-menu">&times;</button>
+        </div>
+      </div>
 
       <div class="header">
-        <img src="./icons/icons8-menu-24.png" alt="" />
+        <img id="menu" src="./icons/icons8-menu-24.png" alt="" />
         <img src="./icons/icons8-search-30.png" alt="" />
       </div>
 
       <div class="volume-control">
         <img src="./icons/icons8-mute-26.png" alt="" />
-        <input type="range" class="volume-slider" name="" id="" />
+        <input
+          type="range"
+          class="volume-slider"
+          id="volume-slider"
+          min="0"
+          max="1"
+          step="0.001"
+          value="1"
+        />
         <img src="./icons/icons8-audio-26.png" alt="" />
       </div>
 
@@ -31,17 +45,19 @@
       </div>
 
       <div class="controls">
-        <img src="./icons/icons8-shuffle-26.png" alt="" />
-        <img src="./icons/icons8-audio-26.png" alt="" />
+        <div id="shuffle">
+          <img src="./icons/icons8-shuffle-26.png" alt="" />
+        </div>
+        <img id="mute-unmute" src="./icons/icons8-audio-26.png" alt="" />
       </div>
 
       <div class="song-progress">
         <div class="time">
-          <div id="current-time" class="current-time">00:00</div>
-          <div id="duration" class="duration">03:24</div>
+          <div id="current-time" class="current-time"></div>
+          <div id="duration" class="duration"></div>
         </div>
-        <div class="progress-bar">
-          <div class="progress"></div>
+        <div id="progress-bar-container" class="progress-bar">
+          <div id="progress" class="progress"></div>
         </div>
       </div>
 

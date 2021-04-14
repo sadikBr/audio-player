@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
+  user-select: none;
 }
 
 body {
@@ -101,6 +102,7 @@ input[type='range']::-moz-range-thumb {
 
 .song-info h1 {
   font-weight: 900;
+  font-size: 1.25rem;
   color: white;
   text-shadow: 0 0 12px gray;
   margin-bottom: 0.5rem;
@@ -109,6 +111,7 @@ input[type='range']::-moz-range-thumb {
 .song-info p {
   color: white;
   font-weight: 700;
+  font-size: 10px;
   text-shadow: 0 0 12px black;
 }
 
@@ -153,6 +156,7 @@ input[type='range']::-moz-range-thumb {
   height: 3px;
   border-radius: 10000px;
   background: white;
+  overflow: hidden;
 }
 
 .progress {
@@ -193,6 +197,66 @@ input[type='range']::-moz-range-thumb {
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
+}
+
+body.shuffle #shuffle {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #f85827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.shuffle #shuffle img {
+  transform: scale(0.75);
+}
+
+.gallery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background: white;
+  transform: translateY(100%);
+  transition: transform 0.25s ease-in-out;
+}
+
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gallery-header h1 {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.gallery-header button {
+  border: 2px solid #f85827;
+  background: transparent;
+  outline: none;
+  padding: 0 0.75rem;
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.25s ease-in-out;
+}
+
+.gallery-header button:hover {
+  color: white;
+  background: #f85827;
+  box-shadow: 0 0 12px #f85827;
+}
+
+body.show-gallery .gallery {
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 500px) {
