@@ -6,6 +6,8 @@ const nextBtn = document.getElementById('next-btn');
 const menuBtn = document.getElementById('menu');
 const closeMenuBtn = document.getElementById('close-menu');
 
+const galleryContent = document.getElementById('gallery-content');
+
 const backgroundImage = document.getElementById('bg-image');
 const songTitle = document.getElementById('title');
 const songArtist = document.getElementById('artist');
@@ -26,6 +28,7 @@ import songs from './songs.js';
 
 let currentSongIndex = 0;
 
+createGallery(songs);
 loadSongAndPlay();
 
 menuBtn.addEventListener('click', () => {
@@ -109,11 +112,13 @@ function formatTime(time) {
 }
 
 function playSong() {
+  document.body.classList.remove('paused');
   playBtn.querySelector('img').src = './icons/icons8-pause-24.png';
   audioElement.play();
 }
 
 function pauseSong() {
+  document.body.classList.add('paused');
   playBtn.querySelector('img').src = './icons/icons8-play-24.png';
   audioElement.pause();
 }
@@ -150,4 +155,15 @@ function unmuteSong() {
   volumeSlider.value = 1;
   audioElement.volume = 1;
   muteElement.src = './icons/icons8-audio-26.png';
+}
+
+function createGallery(songs) {
+  galleryContent.innerHTML = '';
+  songs.forEach((song) => {
+    const songCard = document.createElement('div');
+    songCard.classList.add('song-card');
+    songCard.innerHTML = song.title;
+
+    galleryContent.appendChild(songCard);
+  });
 }
