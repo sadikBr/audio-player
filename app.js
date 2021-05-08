@@ -28,11 +28,18 @@ import songs from './songs.js';
 
 let currentSongIndex = 0;
 
-createGallery(songs);
 loadSongAndPlay();
 
 menuBtn.addEventListener('click', () => {
   document.body.classList.add('show-gallery');
+  const currentSongElement = document.getElementById(currentSongIndex);
+  const yOffset = currentSongElement.offsetTop;
+
+  galleryContent.scrollTo({
+    left: 0,
+    top: yOffset - 60,
+    behavior: 'smooth',
+  });
 });
 closeMenuBtn.addEventListener('click', () => {
   document.body.classList.remove('show-gallery');
@@ -89,6 +96,7 @@ nextBtn.addEventListener('click', () => {
 });
 
 function loadSongAndPlay() {
+  createGallery(songs);
   audioElement.src = songs[currentSongIndex].source;
   backgroundImage.src = songs[currentSongIndex].thumbnail;
   songThumbnail.src = songs[currentSongIndex].thumbnail;
@@ -159,10 +167,27 @@ function unmuteSong() {
 
 function createGallery(songs) {
   galleryContent.innerHTML = '';
-  songs.forEach((song) => {
+  songs.forEach((song, index) => {
     const songCard = document.createElement('div');
+    songCard.setAttribute('id', index);
     songCard.classList.add('song-card');
-    songCard.innerHTML = song.title;
+    songCard.innerHTML = `
+      <img src='${song.thumbnail}' alt='song thumbnail' />
+      <div>
+        <h1>${song.title}</h1>
+        <p>${song.artist}</p>
+      </div>
+    `;
+
+    if (currentSongIndex === index) {
+      songCard.classList.add('current-song');
+    }
+
+    songCard.addEventListener('click', () => {
+      currentSongIndex = index;
+      loadSongAndPlay();
+      createGallery(songs);
+    });
 
     galleryContent.appendChild(songCard);
   });
